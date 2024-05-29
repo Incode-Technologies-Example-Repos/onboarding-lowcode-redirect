@@ -74,3 +74,7 @@ npm run dev
 You will get a hot reloading environment that exposes the page in
 localhost and in the ip of the machine in case you want to try it
 in your cellphone.
+
+## Author
+
+© Incode Technologies Inc. All rights reserved.
