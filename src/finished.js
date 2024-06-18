@@ -10,7 +10,7 @@ async function app() {
   }
   
   try {
-    const overallStatus = await fakeBackendScore(token);
+    const {overallStatus} = await fakeBackendScore(token);
     app.innerHTML =`<h1>Onboarding finished with score: ${overallStatus}</h1>`;
   } catch(e) {
     app.innerHTML = `<h1>Error: ${e.message}</h1>`;

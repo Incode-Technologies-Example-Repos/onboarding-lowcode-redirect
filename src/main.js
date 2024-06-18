@@ -1,4 +1,4 @@
-import {fakeBackendStart, fakeBackendUrl} from './fake_browser';
+import {fakeBackendStart, fakeBackendUrl} from './fake_backend';
 
 async function app() {
   const app = document.getElementById('app');
