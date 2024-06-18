@@ -13,10 +13,13 @@ sequenceDiagram
     participant b as Backend
 
     activate m
+    m-->>b: Start Session
+    note over b: runs /omni/start
+    b-->>m: {token}
     m-->>b: Get Onboarding URL
-    note over b: runs /omni/start,<br>/omni/onboarding-url
-    b-->>m: {url, interviewId}
-    note over m: Save interviewId in localStore
+    note over b: runs /omni/onboarding-url
+    b-->>m: {url}
+    note over m: Save token in localStore
     m->>i: Redirect user to Incode's URL
     deactivate m
     
@@ -28,11 +31,11 @@ sequenceDiagram
     
     activate m
     note over m: Show finishing page
-    note over m: read interviewId from localStore
-    m-->>b: Fetch Score<br>{interviewId}
+    note over m: read token from localStore
+    m-->>b: Fetch Score<br>{token}
     note over b: Fetch Score
     
-    b-->>m: {scores}
+    b-->>m: {overallStatus}
     note over m: Done
     deactivate m
 ```
