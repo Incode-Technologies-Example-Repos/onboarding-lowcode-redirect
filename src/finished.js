@@ -5,8 +5,8 @@ async function app() {
   app.innerHTML = `<h1>Loading...</h1>`;
   
   const interviewId = localStorage.getItem('interviewId');
-  if (!token) {
-    app.innerHTML = `<h1>Error: Invalid token</h1>`;
+  if (!interviewId) {
+    app.innerHTML = `<h1>Error: Invalid InterviewID</h1>`;
   }
   
   try {
