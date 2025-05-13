@@ -35,7 +35,7 @@ sequenceDiagram
     
     activate m
     note over m: Show finishing page
-    note over m: read interview from localStore
+    note over m: read interview from localStorage
     m-->>b: Fetch Score<br>interviewId
     b-->>a: token
     note over a: /0/omni/get/score
