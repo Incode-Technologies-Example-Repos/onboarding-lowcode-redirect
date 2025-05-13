@@ -1,4 +1,4 @@
-import {fakeBackendStart, fakeBackendUrl} from './fake_backend';
+import {fakeBackendStartOnboarding} from './fake_backend';
 
 async function app() {
   const app = document.getElementById('app');
@@ -7,10 +7,9 @@ async function app() {
   startButton.addEventListener('click', async ()=>{
     app.innerHTML = `<h1>Loading...</h1>`;
     try {
-      const {token} = await fakeBackendStart();
-      const {url} = await fakeBackendUrl(token);
+      const {url, interviewId} = await fakeBackendStartOnboarding();
       
-      localStorage.setItem("token", token);
+      localStorage.setItem("interviewId", interviewId);
       
       app.innerHTML =`<h1><a href="${url}">Click Here to Continue</a></h1>`;
       window.location.replace(url);
