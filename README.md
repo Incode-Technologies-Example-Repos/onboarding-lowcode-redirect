@@ -23,7 +23,7 @@ sequenceDiagram
     note over a: /0/omni/onboarding-url
     a-->>b: url
     b-->>m: url, interviewId
-    note over m: Save interviewId in localStore
+    note over m: Save interviewId in localStorage
     m->>i: Redirect user to Incode's URL
     deactivate m
     
