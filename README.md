@@ -11,15 +11,19 @@ sequenceDiagram
     participant i as Incode's<br>Web<br>Flows
     participant m as Customer<br>Site
     participant b as Backend
+    participant a as API
 
     activate m
-    m-->>b: Start Session
-    note over b: runs /omni/start
-    b-->>m: {token}
-    m-->>b: Get Onboarding URL
-    note over b: runs /omni/onboarding-url
-    b-->>m: {url}
-    note over m: Save token in localStore
+    m-->>b: Start Onboarding
+    b-->>a: configurationId
+    note over a: /omni/start
+    a-->b: token, interviewId
+    note over b: Save Token
+    b-->>a: token
+    note over a: /0/omni/onboarding-url
+    a-->>b: url
+    b-->>m: url, interviewId
+    note over m: Save interviewId in localStore
     m->>i: Redirect user to Incode's URL
     deactivate m
     
@@ -31,11 +35,12 @@ sequenceDiagram
     
     activate m
     note over m: Show finishing page
-    note over m: read token from localStore
-    m-->>b: Fetch Score<br>{token}
-    note over b: Fetch Score
-    
-    b-->>m: {overallStatus}
+    note over m: read interview from localStore
+    m-->>b: Fetch Score<br>interviewId
+    b-->>a: token
+    note over a: /0/omni/get/score
+    a-->>b: overallStatus
+    b-->>m: overallStatus
     note over m: Done
     deactivate m
 ```
