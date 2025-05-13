@@ -22,7 +22,7 @@ const fakeBackendStartOnboarding = async function () {
 // Call Incode's `omni/start` API to create an Incode session which will include a
 // token in the response.
 const start = async function () {
-  const url = `${apiurl}/omni/start`;
+  const startUrl = `${apiurl}/omni/start`;
   const params = {
     configurationId: flowid,
     // language: "en-US",
@@ -32,7 +32,7 @@ const start = async function () {
 
   let response;
   try {
-    response = await fetch(url, {
+    response = await fetch(startUrl, {
       method: "POST",
       body: JSON.stringify(params),
       headers: defaultHeader,
@@ -52,14 +52,14 @@ const start = async function () {
 // Call Incode's `omni/start` API to create an Incode session and then
 // `omni/onboarding-url` to generate the onboardingURL
 const onboardingUrl = async function (token) {
-  const onboardingUrl = `${apiurl}/0/omni/onboarding-url`;
+  const onboardingUrlUrl = `${apiurl}/0/omni/onboarding-url`;
 
   let sessionHeaders = { ...defaultHeader };
   sessionHeaders["X-Incode-Hardware-Id"] = token;
 
   let response;
   try {
-    response = await fetch(onboardingUrl, {
+    response = await fetch(onboardingUrlUrl, {
       method: "GET",
       headers: sessionHeaders,
     });
@@ -77,14 +77,14 @@ const onboardingUrl = async function (token) {
 // Gets the results of the onboarding
 const fakeBackendScore = async function (interviewId) {
   const token = getToken(interviewId);
-  const url = `${apiurl}/0/omni/get/score`;
+  const scoreUrl = `${apiurl}/0/omni/get/score`;
 
   let sessionHeaders = { ...defaultHeader };
   sessionHeaders["X-Incode-Hardware-Id"] = token;
 
   let response;
   try {
-    response = await fetch(url, { method: "GET", headers: sessionHeaders });
+    response = await fetch(scoreUrl, { method: "GET", headers: sessionHeaders });
     if (!response.ok) {
       throw new Error("Request failed with code " + response.status);
     }
