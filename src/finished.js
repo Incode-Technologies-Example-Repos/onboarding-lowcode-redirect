@@ -6,7 +6,7 @@ async function app() {
   
   const interviewId = localStorage.getItem('interviewId');
   if (!interviewId) {
-    app.innerHTML = `<h1>Error: Invalid InterviewID</h1>`;
+    app.innerHTML = `<h1>Error: Invalid InterviewId</h1>`;
   }
   
   try {
