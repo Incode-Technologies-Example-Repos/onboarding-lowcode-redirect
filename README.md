@@ -82,6 +82,18 @@ You will get a hot reloading environment that exposes the page in
 localhost and in the ip of the machine in case you want to try it
 in your cellphone.
 
+
+## Session Storage
+
+This sample application uses localStorage to store session data (token and interviewId). In a production environment, you should:
+
+1. Store tokens securely on your backend
+2. Implement proper session management
+3. Handle token expiration and renewal
+4. Consider security implications of storing sensitive data
+
+The implementation in this demo is for demonstration purposes only.
+
 ## Author
 
 © Incode Technologies Inc. All rights reserved.
