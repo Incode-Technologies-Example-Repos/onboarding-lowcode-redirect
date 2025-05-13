@@ -45,8 +45,8 @@ const start = async function () {
   }
 
   // The session response has many values, but you should only pass the token to the frontend.
-  const { token } = await response.json();
-  return { token };
+  const { token, interviewId } = await response.json();
+  return { token, interviewId };
 };
 
 // Call Incode's `omni/start` API to create an Incode session and then
